@@ -55,7 +55,7 @@ class _PasscodePageState extends State<PasscodePage> {
         backgroundColor: Colors.green,
         textColor: Colors.white,
       );
-      currentPasscode = [];
+      currentPasscode.clear();
     } else {
       Toast.show(
         "Incorrect Passcode!",
@@ -65,7 +65,7 @@ class _PasscodePageState extends State<PasscodePage> {
         backgroundColor: Colors.red,
         textColor: Colors.white,
       );
-      currentPasscode = [];
+      currentPasscode.clear();
     }
   }
 
@@ -628,12 +628,16 @@ class _PasscodePageState extends State<PasscodePage> {
                           setState(() {
                             if (textFieldCounter == 4) {
                               thirdController.clear();
+                               currentPasscode.removeAt(2);
                               textFieldCounter = 3;
                             } else if (textFieldCounter == 3) {
                               secondController.clear();
+                               currentPasscode.removeAt(1);
                               textFieldCounter = 2;
                             } else if (textFieldCounter == 2) {
                               firstController.clear();
+                              currentPasscode.removeAt(0);
+                               currentPasscode.clear();
                               textFieldCounter = 1;
                             }
                           });
